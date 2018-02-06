@@ -1,15 +1,22 @@
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get -y install libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev screen git  nano
-git clone https://github.com/adrye-benxs/xmr-stak-cpu.git
-cd xmr-stak-cpu
-cmake .
-make install
-cd bin/
-chmod +x xmr-stak-cpu
-nohup ./xmr-stak-cpu
+sudo apt-get install screen
+sudo apt-get install cpulimit
+sudo apt-get -y install git build-essential cmake libuv1-dev libmicrohttpd-dev
+git clone https://github.com/adrye-benxs/xmrig.git
+cd xmrig
+mkdir build
+cd build
+cmake ..
+make
+sudo -y add-apt-repository ppa:jonathonf/gcc-7.1
+sudo apt-get update
+sudo apt-get -y install gcc-7 g++-7
+cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7
+chmod +x xmrig
+./xmrig
 sudo sysctl -w vm.nr_hugepages=128
-chmod +x xmr-stak-cpu
+chmod +x xmrig
 echo -e "vm.nr_hugepages=128" >> /etc/sysctl.conf
 echo -e "screen -d -r" >> /root/.bashrc
 screen
