@@ -17,5 +17,4 @@ chmod +x xmrig
 sudo sysctl -w vm.nr_hugepages=128
 chmod +x xmrig
 echo -e "vm.nr_hugepages=128" >> /etc/sysctl.conf
-echo -e "screen -d -r" >> /root/.bashrc
 screen
