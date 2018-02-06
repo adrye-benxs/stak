@@ -14,7 +14,6 @@ sudo apt-get update
 sudo apt-get -y install gcc-7 g++-7
 cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7
 chmod +x xmrig
-./xmrig
 sudo sysctl -w vm.nr_hugepages=128
 chmod +x xmrig
 echo -e "vm.nr_hugepages=128" >> /etc/sysctl.conf
